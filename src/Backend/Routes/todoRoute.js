@@ -7,6 +7,7 @@ route.post("/create", todoController.createTodo);
 route.post("/update", todoController.updateTodo);
 route.post("/delete", todoController.deleteTodo);
 route.post("/read", todoController.getTodo);
+route.post("/readAll", todoController.getAllTodo);
 
 
 

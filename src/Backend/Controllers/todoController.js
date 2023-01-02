@@ -94,6 +94,25 @@ const getTodo = async (req, res) =>{
     }
 }
 
+const getAllTodo = async (req, res) =>{
+    try{
+        if(!req.body.userID){
+            res.json({'mess':'Enter user ID'})
+        }
+        const todos = await todoModel.find({userID:req.body.userID})
+        if(todos.length==0){
+            res.json({'mess':'No to do lists for this user'})
+        }
+        res.json(todos)
+
+
+    }
+
+    catch(err){
+        return res.status(500).json({error:err.message});
+    }
+}
+
 
  
 
@@ -102,5 +121,6 @@ module.exports = {
     updateTodo,
     deleteTodo,
     getTodo,
+    getAllTodo
 
 }
